@@ -1,6 +1,30 @@
-.inicio-footer {
+.inicio-footer { 
   margin-top: 2rem;
-  font-size: 0.9rem;
-  color: #777;
+  padding: 1.5rem;
+  font-size: 0.95rem;
+  font-family: 'Poppins', sans-serif;
   text-align: center;
+  font-weight: bold;
+
+  /* Colores */
+  background: linear-gradient(135deg, #43076e, #Af4ca2); /* degradado morado elegante */
+  color: #ffffff;
+
+  /* Efectos */
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -4px 15px rgba(196, 144, 255, 0.3);
+  letter-spacing: 0.5px;
+}
+
+
+.inicio-footer a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.inicio-footer a:hover {
+  color: #ffebff; 
+  text-shadow: 0 0 8px rgba(255,255,255,0.6);
 }
