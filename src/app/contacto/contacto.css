@@ -4,14 +4,14 @@
   padding: 2rem;
   font-family: Arial, sans-serif;
   color: #333;
-  background-color: #f9f9f9;
+  background-color: #0ebddb;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .contacto-container h2 {
   text-align: center;
-  color: #4CAF50;
+  color: #04130e;
   margin-bottom: 1rem;
 }
 
@@ -48,8 +48,8 @@
 
 .contacto-form button {
   padding: 0.8rem;
-  background-color: #4CAF50;
-  color: white;
+  background-color: #5cd5da;
+  color: rgb(0, 15, 14);
   border: none;
   border-radius: 5px;
   font-weight: bold;
@@ -58,5 +58,5 @@
 }
 
 .contacto-form button:hover {
-  background-color: #45a049;
+  background-color: #4effff;
 }
