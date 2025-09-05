@@ -5,9 +5,10 @@ header {
   align-items: center;
   padding: 15px 30px;
   background: linear-gradient(90deg, #3b82f6, #2563eb);
-  color: white;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   border-bottom: 3px solid #3b82f6;
+  background-color: #e6f2ff; 
+
 }
 
 header .logo {
@@ -16,6 +17,7 @@ header .logo {
   gap: 8px;
   font-weight: bold;
   font-size: 20px;
+  color: white;
 }
 
 header .buttons {
@@ -45,4 +47,9 @@ header .buttons button:hover {
 .btn-register {
   background-color: rgba(255,255,255,0.2);
   color: white;
+}
+
+header .logo img {
+  height: 1em; 
+  width: auto; 
 }
