@@ -1,5 +1,5 @@
 .inicio-header {
-  background-color: #c472ff;
+  background-color: #43076e;
   color: white;
   padding: 3rem 1rem;
   border-radius: 8px;
@@ -29,15 +29,57 @@ img{
 .btn-primary {
   display: inline-block;
   padding: 0.8rem 2rem;
-  background-color: #fff;
-  color: #4CAF50;
+  background-color: #af4ca2;
+  color: #fff;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
   transition: background-color 0.3s ease, color 0.3s ease;
+  margin-right: 1.5rem;
 }
 
 .btn-primary:hover {
-  background-color: #45a049;
+  background-color: #43076e;
   color: white;
 }
+
+.btn-secondary {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: #af4ca2;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  margin-right: 1.5rem;
+  
+
+  
+}
+
+
+.btn-secondary:hover {
+  background-color: #43076e;      
+  color: #fff;              
+}
+.btn-tertiary {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: #af4ca2;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  
+
+  
+}
+
+
+.btn-tertiary:hover {
+  background-color: #43076e;      
+  color: #fff;              
+}
+

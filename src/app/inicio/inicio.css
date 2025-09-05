@@ -1,24 +1,15 @@
-.features {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
+h1 {
+  font-family: 'Arial', sans-serif;
+  font-size: 2.5rem;
+  color: #af4ca2;
+  text-align: center; 
 }
-
-.feature-card {
-  background-color: #f9f9f9;
-  padding: 1.5rem;
-  border-radius: 8px;
-  width: 250px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+p{
+  font-family: 'Arial', sans-serif;
+  font-size: 1rem;
+  color: #43076e;
+  text-align: center; 
 }
-
-.feature-card h3 {
-  margin-bottom: 0.5rem;
-  color: #4CAF50;
-}
-
-.feature-card p {
-  font-size: 0.95rem;
+img{
+img-align: center;
 }
