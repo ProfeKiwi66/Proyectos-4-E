@@ -1,24 +1,82 @@
-.features {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
+main {
+    padding: 50px 20px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.8s ease-in-out;
+    background-color: #f9fafb;
+    background-position: calc(100% - 40px) 100px;
+    background-attachment: fixed;
 }
 
-.feature-card {
-  background-color: #f9f9f9;
-  padding: 1.5rem;
-  border-radius: 8px;
-  width: 250px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+/* Tipografía del main */
+main h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #1f2937;
+    text-align: center;
 }
 
-.feature-card h3 {
-  margin-bottom: 0.5rem;
-  color: #4CAF50;
+main p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 25px;
+    text-align: center;
 }
 
-.feature-card p {
-  font-size: 0.95rem;
+/* Características */
+.caracteristicas {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.caracteristicas h2 {
+    font-size: 22px;
+    margin-bottom: 25px;
+    color: #1f2937;
+}
+
+.caracteristicas .items {
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+    flex-wrap: wrap;
+}
+
+.caracteristicas .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #333;
+    font-size: 15px;
+    transition: transform 0.3s ease;
+    padding: 20px;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.caracteristicas .item:hover {
+    transform: translateY(-5px);
+    background: #f3f4f6;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.caracteristicas .item i {
+    font-size: 36px;
+    margin-bottom: 12px;
+    color: #3b82f6;
+}
+
+/* Sobre nosotros */
+.sobre-nosotros {
+    max-width: 800px;
+    margin: 30px auto;
+    line-height: 1.5;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    color: #444;
+    animation: slideIn 0.8s ease-in-out;
 }
