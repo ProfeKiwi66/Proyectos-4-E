@@ -5,20 +5,22 @@
     <h2>Contacto</h2>
     <p>Completa el formulario a continuación y nos pondremos en contacto contigo lo antes posible.</p>
 
-    <form class="contact-form" id="contactForm">
-      <!-- Nombre -->
+    <!-- Mensaje de éxito -->
+    <div id="successMessage" class="success-message" style="display: none;">
+      <p>🎉 Gracias por contactarnos. Te responderemos lo antes posible.</p>
+    </div>
+
+    <form class="contact-form" id="contactForm" method="POST">
       <div class="form-group">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
       </div>
 
-      <!-- Correo -->
       <div class="form-group">
         <label for="email">Correo electrónico:</label>
         <input type="email" id="email" name="email" placeholder="tu@email.com" required />
       </div>
 
-      <!-- Mensaje -->
       <div class="form-group">
         <label for="mensaje">Mensaje:</label>
         <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje" rows="5" required></textarea>
@@ -34,3 +36,20 @@
 </div>
 
 <app-footer></app-footer>
+
+<!-- Script para manejar envío -->
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Mostrar mensaje de éxito
+    const successMsg = document.getElementById('successMessage');
+    successMsg.style.display = 'block';
+
+    // Ocultar el formulario después de 3 segundos
+    setTimeout(() => {
+      this.reset();
+      successMsg.style.display = 'none';
+    }, 3000);
+  });
+</script>
