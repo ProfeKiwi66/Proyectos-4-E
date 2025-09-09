@@ -1,83 +1,220 @@
+
+:root {
+  --color-primary: #3b82f6;          /* Azul principal para acentos e iconos */
+  --color-primary-light: #62a1e9;     /* Azul más claro para gradientes */
+  --color-text-dark: #1f2937;        /* Negro azulado para títulos */
+  --color-text-body: #555;           /* Gris oscuro para párrafos */
+  --color-text-light: #ffffff;        /* Blanco para texto sobre fondos oscuros */
+
+  --color-background: #F7F9FC;       /* Fondo principal de la página (gris muy claro) */
+  --color-surface: #ffffff;          /* Color de fondo para las tarjetas */
+  
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05); /* Sombra suave para tarjetas */
+  --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.2);   /* Sombra más fuerte para hovers */
+}
+
+
 main {
-    padding: 50px 20px 80px;
-    display: flex;
+  background-color: #F7F9FC;
+  /* Un fondo más neutro para que resalten las secciones */
+  animation: fadeIn 0.8s ease-in-out;
+  padding-top: 1px;
+  /* Espacio para el header fijo */
+}
+
+/* --- BARRA DE BIENVENIDA (NUEVO) --- */
+.hero-bar {
+  width: 100%;
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, #62a1e9, #63a1ec);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5rem;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 550px;
+  text-align: left;
+}
+
+.hero-text h1 {
+  font-size: 4.5rem;
+  /* Usando rem para escalar */
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.hero-text p {
+  font-size: 1.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 3rem;
+}
+
+.hero-visual {
+  flex: 1;
+  max-width: 500px;
+}
+
+.hero-visual img {
+  max-width: 100%;
+  height: auto;
+}
+
+.btn-cta-hero {
+  padding: 1.4rem 3.5rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1.7rem;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: white;
+  color: #4A90E2;
+  transition: all 0.3s ease;
+}
+
+.btn-cta-hero:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 992px) {
+  .hero-content {
     flex-direction: column;
-    align-items: center;
-    animation: fadeIn 0.8s ease-in-out;
-    background-color: #dbe9f8;
-    background-position: calc(100% - 40px) 100px;
-    background-attachment: fixed;
+    text-align: center;
+  }
+
+  .hero-text {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
 }
 
-/* Tipografía del main */
-main h1 {
-    font-size: 32px;
-    margin-bottom: 15px;
-    color: #1f2937;
-    text-align: center;
+/* --- RESTO DE TUS ESTILOS (CON PEQUEÑOS AJUSTES) --- */
+
+/* Sobre nosotros */
+.sobre-nosotros {
+  max-width: 800px;
+  margin: 4rem auto;
+  /* Usando auto para centrar */
+  background: white;
+  padding: 3rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-main p {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 25px;
-    text-align: center;
+/* Cómo funciona */
+.como-funciona {
+  max-width: 900px;
+  margin: 4rem auto;
+  text-align: center;
+}
+
+.como-funciona h2,
+.caracteristicas h2,
+.sobre-nosotros h2 {
+  font-size: 2.8rem;
+  margin-bottom: 3rem;
+  color: #1f2937;
+}
+
+.como-funciona .pasos {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.como-funciona .paso,
+.caracteristicas .item {
+  background: white;
+  padding: 2.5rem 3rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  flex-basis: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.como-funciona .paso:hover,
+.caracteristicas .item:hover {
+  border-color: #3b82f6;
+  transform: translateY(-5px);
+}
+
+.como-funciona .paso i,
+.caracteristicas .item i {
+  font-size: 3.8rem;
+  margin-bottom: 1.5rem;
+  color: #3b82f6;
+}
+
+.como-funciona .paso span,
+.caracteristicas .item span {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.como-funciona .paso p {
+  font-size: 1.6rem;
+  color: #555;
+  line-height: 1.6;
+  margin-top: 1rem;
 }
 
 /* Características */
 .caracteristicas {
-    margin: 40px 0;
-    text-align: center;
-}
-
-.caracteristicas h2 {
-    font-size: 22px;
-    margin-bottom: 25px;
-    color: #1f2937;
+  margin: 4rem auto;
+  text-align: center;
+  max-width: 900px;
 }
 
 .caracteristicas .items {
-    display: flex;
-    justify-content: center;
-    gap: 70px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
 }
 
-.caracteristicas .item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #333;
-    font-size: 15px;
-    transition: transform 0.3s ease;
-    padding: 20px;
-    border-radius: 8px;
-    background: white;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
+/* Tus elementos decorativos de fondo (sin cambios) */
+@media (min-width: 1024px) {
 
-.caracteristicas .item:hover {
-    transform: translateY(-5px);
-    background: #f3f4f6;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-}
+  body::before,
+  body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    z-index: -1;
+    background: rgba(59, 130, 246, 0.1);
+    filter: blur(80px);
+  }
 
-.caracteristicas .item i {
-    font-size: 36px;
-    margin-bottom: 12px;
-    color: #3b82f6;
-}
+  body::before {
+    width: 350px;
+    height: 350px;
+    top: -150px;
+    left: -150px;
+  }
 
-/* Sobre nosotros */
-.sobre-nosotros {
-    max-width: 800px;
-    margin: 60px ;
-    line-height: 1.5;
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    color: #444;
-    animation: slideIn 0.8s ease-in-out;
+  body::after {
+    width: 400px;
+    height: 400px;
+    bottom: -200px;
+    right: -200px;
+  }
 }
-

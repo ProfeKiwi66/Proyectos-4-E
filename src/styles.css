@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+/* --- Elementos Decorativos de Fondo --- */
+
+/* Solo se mostrarán en pantallas de escritorio para no saturar en móvil */
+@media (min-width: 1024px) {
+  body::before,
+  body::after {
+    content: '';
+    position: fixed; /* Fija las formas a la ventana */
+    border-radius: 50%; /* Las convierte en círculos */
+    z-index: -1; /* ¡IMPORTANTE! Las envía detrás de todo tu contenido */
+    
+    /* Usamos tu color azul principal pero con muy baja opacidad */
+    background: rgba(59, 130, 246, 0.1); 
+    
+    /* El filtro blur las desenfoca para un efecto suave */
+    filter: blur(80px); 
+  }
+
+  /* Círculo superior izquierdo */
+  body::before {
+    width: 350px;
+    height: 350px;
+    top: -150px; /* Lo posiciona parcialmente fuera de la pantalla */
+    left: -150px;
+  }
+
+  /* Círculo inferior derecho */
+  body::after {
+    width: 400px;
+    height: 400px;
+    bottom: -200px; /* Lo posiciona parcialmente fuera de la pantalla */
+    right: -200px;
+  }
+}
