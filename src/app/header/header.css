@@ -1,4 +1,5 @@
 .inicio-header {
+  background-color:  #4cAF50;;
   background-color: #059baf;
   color: white;
   padding: 3rem 1rem;
@@ -21,6 +22,7 @@
   display: inline-block;
   padding: 0.8rem 2rem;
   background-color: #fff;
+  color: #4cAF50;
   color: #000000;
   border-radius: 5px;
   text-decoration: none;
@@ -29,6 +31,7 @@
 }
 
 .btn-primary:hover {
+  background-color: #45a049;
   background-color: #45c8da;
   color: white;
 }
