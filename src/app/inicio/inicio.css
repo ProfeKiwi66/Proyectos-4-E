@@ -49,7 +49,7 @@ main {
 }
 
 .hero-visual img {
-  max-width: 100%;
+  max-width: 140%;
   height: auto;
   border-radius: 20px; 
   object-fit: cover; 

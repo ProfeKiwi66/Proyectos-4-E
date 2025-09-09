@@ -1,1 +1,38 @@
-<p>iniciosesion works!</p>
+<app-header></app-header>
+
+<div class="contact-wrapper">
+  <div class="contact-container">
+    <h2>Inicia Sesión</h2>
+    <p>Completa el formulario a continuación para iniciar Sesión.</p>
+
+    <form class="contact-form" id="contactForm">
+      <!-- Nombre -->
+      <div class="form-group">
+        <label for="nombre">Nombre de usuario:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre de usuario" required />
+      </div>
+
+      <!-- contraseña -->
+      <div class="form-group">
+        <label for="email">Contraseña:</label>
+        <input type="Contraseña" id="Contraseña" name="Contraseña" placeholder="Contraseña" required />
+      </div>
+
+
+
+      <div class="button-group">
+        <button type="submit" class="submit-btn">Iniciar Sesion</button>
+        <button class="submit-btn2" onclick="location.href='/recuperacion'">Recuperar Contraseña</button>
+
+      </div>
+
+      
+    </form>
+  </div>
+
+  <!-- Decoraciones laterales animadas -->
+  <div class="decorative-left"></div>
+  <div class="decorative-right"></div>
+</div>
+
+<app-footer></app-footer>
