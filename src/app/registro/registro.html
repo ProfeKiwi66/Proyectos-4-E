@@ -1,1 +1,66 @@
-<p>registro works!</p>
+<app-header></app-header>
+
+<div class="contact-wrapper">
+  <div class="contact-container">
+    <h2>Registrarse</h2>
+    <p>Registrate con tu nombre, gmail y contraseña</p>
+
+    <!-- Mensaje de éxito -->
+    <div id="successMessage" class="success-message" style="display: none;">
+      <p>🎉 Gracias por registrarte</p>
+    </div>
+
+    <form class="contact-form" id="contactForm" method="POST">
+      
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+      </div>
+
+      <div class="form-group">
+        <label for="nombre_usuario">Nombre de usuario:</label>
+        <input type="text" id="nombre_usuario" name="nombre_usuario" placeholder="Tu nombre de usuario" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+      </div>
+
+      <div class="form-group">
+        <label for="contraseña">Contraseña:</label>
+        <input type="text" id="contraseña" name="contraseña" placeholder="Tu contraseña" required />
+      </div>
+    <!-- AGREGAR EL SCRIPT PARA QUE VERIFIQUE QUE AMBAS CONTRASEÑAS SEAN IGUALES -->
+      <div class="form-group">
+        <label for="confirma_contraseña">Confirma tu contraseña:</label>
+        <input type="text" id="confirma_contraseña" name="confirma_contraseña" placeholder="Repite tu contraseña" required />
+      </div>
+
+      <button type="submit" class="submit-btn">Enviar</button>
+    </form>
+  </div>
+
+  <!-- Decoraciones laterales animadas -->
+  <div class="decorative-left"></div>
+  <div class="decorative-right"></div>
+</div>
+
+<app-footer></app-footer>
+
+<!-- Script para manejar envío -->
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Mostrar mensaje de éxito
+    const successMsg = document.getElementById('successMessage');
+    successMsg.style.display = 'block';
+
+    // Ocultar el formulario después de 3 segundos
+    setTimeout(() => {
+      this.reset();
+      successMsg.style.display = 'none';
+    }, 3000);
+  });
+</script>
