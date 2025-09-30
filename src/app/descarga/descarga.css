@@ -1,4 +1,3 @@
-/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -12,8 +11,7 @@ body {
   line-height: 1.6;
 }
 
-/* Hero Section */
-.hero {
+.presentacion {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -22,22 +20,22 @@ body {
   color: white;
 }
 
-.hero-text {
+.texto-presentacion {
   flex: 1;
   padding-right: 40px;
 }
 
-.hero-text h1 {
+.texto-presentacion h1 {
   font-size: 3em;
   margin-bottom: 20px;
 }
 
-.hero-text p {
+.texto-presentacion p {
   font-size: 1.2em;
   margin-bottom: 30px;
 }
 
-.download-btn {
+.boton-descarga {
   background-color: white;
   color: #6a0dad;
   padding: 15px 25px;
@@ -47,58 +45,56 @@ body {
   transition: background 0.3s;
 }
 
-.download-btn:hover {
+.boton-descarga:hover {
   background-color: #e0c5ff;
 }
 
-.hero-image {
+.imagen-presentacion {
   flex: 1;
   text-align: center;
 }
 
-.hero-image img {
+.imagen-presentacion img {
   max-width: 100%;
   height: auto;
 }
 
-/* Features Section */
-.features {
+.funcionalidades {
   padding: 60px 10%;
   background-color: #f8f4ff;
   text-align: center;
 }
 
-.features h2 {
+.funcionalidades h2 {
   color: #6a0dad;
   font-size: 2em;
   margin-bottom: 40px;
 }
 
-.feature-grid {
+.rejilla-funcionalidades {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
 }
 
-.feature {
+.funcionalidad {
   background: white;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(106, 13, 173, 0.1);
 }
 
-.feature img {
+.funcionalidad img {
   width: 80px;
   margin-bottom: 15px;
 }
 
-.feature h3 {
+.funcionalidad h3 {
   color: #6a0dad;
   margin-bottom: 10px;
 }
 
-/* Highlight Section */
-.highlight {
+.destacado {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -106,34 +102,35 @@ body {
   background-color: #fff;
 }
 
-.highlight-text {
+.texto-destacado {
   flex: 1;
   padding-right: 40px;
 }
 
-.highlight-text h2 {
+.texto-destacado h2 {
   color: #6a0dad;
   font-size: 2em;
   margin-bottom: 20px;
 }
 
-.highlight-image {
+.imagen-destacado {
   flex: 1;
   text-align: center;
 }
 
-.highlight-image img {
+.imagen-destacado img {
   max-width: 100%;
   height: auto;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-  .hero, .highlight {
+  .presentacion,
+  .destacado {
     flex-direction: column;
   }
 
-  .hero-text, .highlight-text {
+  .texto-presentacion,
+  .texto-destacado {
     padding-right: 0;
     text-align: center;
   }
