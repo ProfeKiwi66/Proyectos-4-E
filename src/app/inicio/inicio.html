@@ -1,18 +1,265 @@
-<app-header></app-header>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARDA - Apoyo Escolar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-<section class="features">
-  <div class="feature-card">
-    <h3>Funcionalidad 1</h3>
-    <p>Descripción breve de la funcionalidad o servicio que ofrece tu app.</p>
-  </div>
-  <div class="feature-card">
-    <h3>Funcionalidad 2</h3>
-    <p>Descripción breve de la funcionalidad o servicio que ofrece tu app.</p>
-  </div>
-  <div class="feature-card">
-    <h3>Funcionalidad 3</h3>
-    <p>Descripción breve de la funcionalidad o servicio que ofrece tu app.</p>
-  </div>
-</section>
+    body {
+      background-color: #f2f3f5;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      text-align: center;
+    }
 
-<app-footer></app-footer>
+    /* Header */
+    header {
+      background: #00447A;
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      color: #fff;
+      font-size: 2.2rem;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #83B81A;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 50px 20px;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #00447A;
+    }
+
+    section p {
+      max-width: 800px;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+
+    /* Tarjetas */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      color: #83B81A;
+      margin-bottom: 10px;
+    }
+
+    /* Formulario */
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 400px;
+      text-align: left;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    form button {
+      width: 100%;
+      padding: 12px;
+      background: #00447A;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    form button:hover {
+      background: #83B81A;
+    }
+
+    /* Redes sociales */
+    .socials a {
+      margin: 0 10px;
+      font-size: 1.3rem;
+      text-decoration: none;
+      color: #00447A;
+      font-weight: bold;
+    }
+
+    .socials a:hover {
+      color: #83B81A;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ARDA - Apoyo Escolar</h1>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#temas">Temas</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#videos">Videos</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#minijuegos">Minijuegos</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#redes">Redes</a>
+    </nav>
+  </header>
+
+  <!-- INICIO -->
+  <section id="inicio">
+    <h2>Bienvenido a ARDA</h2>
+    <p>Un espacio de apoyo para adolescentes, enfocado en la salud mental y el bienestar escolar.</p>
+  </section>
+
+  <!-- TEMAS -->
+  <section id="temas">
+    <h2>Temas de Apoyo</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Ansiedad</h3>
+        <p>Recursos y estrategias para manejar la ansiedad en el entorno escolar.</p>
+      </div>
+      <div class="card">
+        <h3>Depresión</h3>
+        <p>Apoyo emocional y guías para reconocer y enfrentar la depresión.</p>
+      </div>
+      <div class="card">
+        <h3>Comunidad</h3>
+        <p>Fortaleciendo la convivencia y el apoyo mutuo entre estudiantes y docentes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section id="nosotros">
+    <h2>Nosotros</h2>
+    <p>ARDA surge como un proyecto de apoyo escolar del Instituto Comercial Bicentenario de Viña del Mar, 
+       enfocado en la seguridad, la salud emocional y el bienestar de nuestros estudiantes.</p>
+  </section>
+
+  <!-- VIDEOS -->
+  <section id="videos">
+    <h2>Videos Educativos</h2>
+    <p>Aquí podrás encontrar videos de apoyo sobre salud mental, convivencia escolar y más.</p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+      title="Video de ejemplo" frameborder="0" allowfullscreen></iframe>
+  </section>
+
+  <!-- EVENTOS -->
+  <section id="eventos">
+    <h2>Eventos</h2>
+    <p>Charlas, talleres y actividades para fomentar la salud emocional y el aprendizaje en comunidad.</p>
+    <ul>
+      <li>📅 Taller de manejo de ansiedad - 12 Octubre</li>
+      <li>📅 Jornada de convivencia escolar - 25 Octubre</li>
+      <li>📅 Actividad recreativa y minijuegos - 5 Noviembre</li>
+    </ul>
+  </section>
+
+  <!-- MINIJUEGOS -->
+  <section id="minijuegos">
+    <h2>Minijuegos</h2>
+    <p>Pequeños juegos para relajarte y aprender.</p>
+    <button onclick="alert('Juego en desarrollo 🎮')">Jugar Ahora</button>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <form onsubmit="enviarFormulario(event)">
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="email">Gmail</label>
+      <input type="email" id="email" name="email" required placeholder="tuemail@gmail.com">
+
+      <label for="mensaje">Mensaje</label>
+      <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <!-- REDES -->
+  <section id="redes">
+    <h2>Nuestras Redes</h2>
+    <p>Síguenos y mantente informado:</p>
+    <div class="socials">
+      <a href="https://facebook.com" target="_blank">Facebook</a>
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+      <a href="https://youtube.com" target="_blank">YouTube</a>
+    </div>
+  </section>
+
+  <script>
+    function enviarFormulario(e) {
+      e.preventDefault();
+      alert("¡Gracias por contactarnos! Hemos recibido tu mensaje.");
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
