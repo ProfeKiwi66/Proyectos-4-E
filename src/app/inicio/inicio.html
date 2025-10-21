@@ -1,67 +1,79 @@
 <app-header></app-header>
 
 <main>
-  <section class="hero-bar">
-      <div class="hero-content">
-          <div class="hero-text">
-              <h1>Organiza Horarios Complejos, <strong>Sin Esfuerzo</strong></h1>
-              <p>
-                  La herramienta inteligente que automatiza la creación de horarios. 
-                  Ahorra tiempo, evita conflictos y optimiza tus recursos.
-              </p>
-              <button class="btn btn-cta-hero" onclick="location.href='/registro'">¡COMIENZA YA!</button>
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title fade-in">
+                    Organiza Horarios Complejos, <span class="highlight-text">Sin Esfuerzo</span>
+                </h1>
+                <p class="hero-subtitle fade-in fade-in-delay-1">
+                    La herramienta inteligente que automatiza la creación de horarios. Ahorra tiempo, evita conflictos y optimiza tus recursos.
+                </p>
+                <button class="cta-button fade-in fade-in-delay-2">
+                    ¡COMIENZA YA!
+                </button>
+            </div>
+            <div class="hero-image-wrapper fade-in fade-in-delay-3">
+                 <img src="https://placehold.co/1000x500/1e293b/3b82f6?text=Visualización+de+Horario&font=inter" alt="Ilustración de la interfaz de ChronoPlan mostrando un horario" class="hero-image">
+            </div>
+        </div>
+    </section>
 
-          </div>
-          <div class="hero-visual">
-              <img src="https://mail.google.com/mail/u/0?ui=2&ik=04b7857e5d&attid=0.1&permmsgid=msg-f:1842795641154444954&th=1992ecdf40a61e9a&view=fimg&fur=ip&permmsgid=msg-f:1842795641154444954&sz=s0-l75-ft&attbid=ANGjdJ9-i3qk555dfAGWg6btiOO9knH5d6d8u-x0RW4Qq2mK2jqvJCq99S13-OXSTLY1MeoeBeabZwdGSG7VHW2G94dZLGUClCn6d3G6e5qQOzGO8yJnfQ3hlG7zIBc&disp=emb&realattid=ii_mfcv50w30&zw" alt="Ilustración de gestión de tiempo">
-          </div>
-      </div>
-  </section>
-  
-  <section class="sobre-nosotros">
-      <h2>Sobre nosotros</h2>
-      <p>
-          ChronoPlan te permite crear y gestionar los horarios de forma eficiente,
-          haciendo que el proceso sea más ágil sin tener que perder horas tratando de cuadrar todo manualmente.
-          Además, contamos con una interfaz moderna y fácil de usar, para que cualquier persona,
-          sin importar su experiencia con la tecnología, pueda utilizarla sin problemas.
-      </p>
-  </section>
+    <section id="sobre-nosotros" class="content-section bg-darker">
+        <div class="container narrow-container">
+            <h2 class="section-title">Sobre Nosotros</h2>
+            <p class="section-text">
+                ChronoPlan te permite crear y gestionar los horarios de forma eficiente, haciendo que el proceso sea más ágil sin tener que perder horas tratando de cuadrar todo manualmente. Además, contamos con una interfaz moderna y fácil de usar, para que cualquier persona, sin importar su experiencia con la tecnología, pueda utilizarla sin problemas.
+            </p>
+        </div>
+    </section>
 
-  <section class="como-funciona">
-      <h2>¿Cómo Funciona?</h2>
-      <div class="pasos">
-          <div class="paso">
-              <i class="fa-solid fa-list-check"></i>
-              <span>Define tus Parámetros</span>
-              <p>
-                  Ingresa la disponibilidad horaria de tus profesores y especifica la carga académica requerida para cada curso.
-                  Tú pones las reglas, nosotros nos encargamos del resto.
-              </p>
-          </div>
-          <div class="paso">
-              <i class="fa-solid fa-wand-magic-sparkles"></i>
-              <span>Nosotros Automatizamos</span>
-              <p>
-                  Nuestro algoritmo inteligente procesará toda la información y cruzará los datos para generar el horario más
-                  eficiente y equilibrado posible, ¡en cuestión de segundos!
-              </p>
-          </div>
-      </div>
-  </section>
+    <section id="como-funciona" class="content-section">
+        <div class="container">
+            <h2 class="section-title">¿Cómo Funciona?</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="icon-wrapper">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="m16 13-6 0"/><path d="M16 17H8"/><path d="m12 9-4 0"/></svg>
+                    </div>
+                    <h3 class="card-title">Define tus Parámetros</h3>
+                    <p class="card-text">
+                        Ingresa la disponibilidad horaria de tus profesores y especifica la carga académica requerida para cada curso. Tú pones las reglas, nosotros nos encargamos del resto.
+                    </p>
+                </div>
+                <div class="step-card">
+                    <div class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69c.94-2.12 4.01-2.24 4.95-.23 1.45 3.02-2.72 6.43-4.95 6.43s-6.4-3.41-4.95-6.43c.94-2.01 4.01-1.89 4.95.23z"/><path d="m12 15-3.5 3.5"/><path d="m12 15 3.5-3.5"/><path d="m12 15 3.5 3.5"/><path d="m12 15-3.5-3.5"/><path d="M19.26 19.26 14 14"/><path d="m22 22-5.26-5.26"/><path d="m4.74 19.26 5.26-5.26"/><path d="m2 22 5.26-5.26"/></svg>
+                    </div>
+                    <h3 class="card-title">Nosotros Automatizamos</h3>
+                    <p class="card-text">
+                        Nuestro algoritmo inteligente procesará toda la información y cruzará los datos para generar el horario más eficiente y equilibrado posible, ¡en cuestión de segundos!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section class="caracteristicas">
-      <h2>Características Principales</h2>
-      <div class="items">
-          <div class="item">
-              <i class="fa-regular fa-calendar"></i>
-              <span>Ver horarios</span>
-          </div>
-          <div class="item">
-              <i class="fa-regular fa-bell"></i>
-              <span>Recibir Notificaciones</span>
-          </div>
-      </div>
-  </section>
+    <section id="caracteristicas" class="content-section bg-darker">
+        <div class="container">
+            <h2 class="section-title">Características Principales</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="icon-wrapper">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                    </div>
+                    <span class="feature-name">Ver horarios</span>
+                </div>
+                <div class="feature-item">
+                     <div class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+                    </div>
+                    <span class="feature-name">Recibir Notificaciones</span>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
+
 <app-footer></app-footer>
