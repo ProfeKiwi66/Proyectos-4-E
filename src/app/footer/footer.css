@@ -1,5 +1,5 @@
 footer {
-  position: flex;
+  position: relative; /* ← CORRECCIÓN: Cambia 'flex' por 'relative' */
   bottom: 0;
   left: 0;
   width: 100%;
@@ -7,7 +7,8 @@ footer {
   text-align: center;
   font-size: 14px;
   background-color: #000000;
-  
+  color: white; /* ← AÑADE esto para que el texto sea visible */
+  margin-top: auto; /* ← AÑADE esto para empujar el footer abajo */
 }
 
 footer a {
@@ -18,5 +19,5 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
+  color: #ffffff; /* ← AÑADE hover más visible */
 }
-

@@ -1,3 +1,12 @@
+.contact-wrapper {
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+}
+
 :root {
   --primary-blue: #3b82f6;
   --accent-green: #83B81A;
@@ -19,16 +28,6 @@ body {
   background-color: var(--light-gray);
   color: var(--dark-text);
   line-height: 1.6;
-}
-
-.contact-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-  position: relative;
-  padding: 2rem;
-  overflow: hidden;
 }
 
 /* Decoraciones laterales - Más visibles y animadas */
@@ -75,8 +74,7 @@ body {
   padding: 2.5rem;
   background-color: var(--white);
   border-radius: 16px;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border-color);
+
   position: relative;
   z-index: 2;
   transition: transform 0.3s ease;
