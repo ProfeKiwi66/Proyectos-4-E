@@ -6,7 +6,7 @@ import { Inicio } from './inicio/inicio';
 import { Contacto } from './contacto/contacto';
 import { Registro } from './registro/registro';
 import { Horarios } from './horarios/horarios';
-import { Iniciosesion } from './iniciosesion/iniciosesion';
+import { InicioSesion } from './iniciosesion/iniciosesion';
 import { Recuperacion } from './recuperacion/recuperacion';
 
 export const routes: Routes = [
@@ -15,7 +15,7 @@ export const routes: Routes = [
   { path: 'contacto', component: Contacto },
   { path: 'registro', component: Registro },
   { path: 'horarios', component: Horarios },
-  { path: 'iniciosesion', component: Iniciosesion },
+  { path: 'iniciosesion', component: InicioSesion },
   { path: 'recuperacion', component: Recuperacion },
   { path: '**', redirectTo: '' }
 ];

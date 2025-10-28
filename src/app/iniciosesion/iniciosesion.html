@@ -1,36 +1,73 @@
 
+
+<div class="contact-wrapper">
+  <div class="contact-container" style="border: 5px solid blue;">
+    <!-- el resto de tu código normal -->
 <div class="contact-wrapper">
   <div class="contact-container">
     <h2>Inicia Sesión</h2>
     <p>Completa el formulario a continuación para iniciar Sesión.</p>
 
-    <form class="contact-form" id="contactForm">
-      <!-- Nombre -->
+    <form class="contact-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <!-- Email (REEMPLAZA "Nombre de usuario") -->
       <div class="form-group">
-        <label for="nombre">Nombre de usuario:</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre de usuario" required />
+        <label for="email">Correo electrónico:</label>
+        <input 
+          type="email" 
+          id="email" 
+          formControlName="email" 
+          placeholder="tu@gmail.com"
+          class="form-control"
+          [class.error]="email?.invalid && (email?.dirty || email?.touched)">
+        <div class="error-message" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+          <span *ngIf="email?.errors?.['required']">El email es requerido</span>
+          <span *ngIf="email?.errors?.['email']">Formato de email inválido</span>
+        </div>
       </div>
 
-      <!-- contraseña -->
+      <!-- Contraseña (YA ESTÁ BIEN) -->
       <div class="form-group">
-        <label for="email">Contraseña:</label>
-        <input type="Contraseña" id="Contraseña" name="Contraseña" placeholder="Contraseña" required />
+        <label for="password">Contraseña:</label>
+        <input 
+          type="password" 
+          id="password" 
+          formControlName="password" 
+          placeholder="Tu contraseña"
+          class="form-control"
+          [class.error]="password?.invalid && (password?.dirty || password?.touched)">
+        <div class="error-message" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+          <span *ngIf="password?.errors?.['required']">La contraseña es requerida</span>
+          <span *ngIf="password?.errors?.['minlength']">Mínimo 6 caracteres</span>
+        </div>
       </div>
 
+      <!-- Mensaje de error general -->
+      <div class="error-message" *ngIf="mensajeError" style="text-align: center; margin-bottom: 1rem;">
+        {{ mensajeError }}
+      </div>
 
-
+      <!-- Botones -->
       <div class="button-group">
-        <button type="submit" class="submit-btn">Iniciar Sesion</button>
-        <button class="submit-btn2" onclick="location.href='/recuperacion'">Recuperar Contraseña</button>
-
+        <button 
+          type="submit" 
+          class="submit-btn"
+          [disabled]="cargando || loginForm.invalid">
+          <span *ngIf="!cargando">Iniciar Sesión</span>
+          <span *ngIf="cargando">Iniciando...</span>
+        </button>
+        
+        <button 
+          type="button" 
+          class="submit-btn"
+          (click)="recuperarPassword()"
+          [disabled]="cargando">
+          Recuperar Contraseña
+        </button>
       </div>
-
-      
     </form>
   </div>
 
-  <!-- Decoraciones laterales animadas -->
+  <!-- Decoraciones laterales -->
   <div class="decorative-left"></div>
   <div class="decorative-right"></div>
 </div>
-

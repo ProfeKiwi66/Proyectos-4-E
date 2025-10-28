@@ -74,3 +74,61 @@ header .buttons .btn-primary:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
+/* Estilos para el menú de usuario */
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-name {
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.logout-btn {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.logout-btn:hover {
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  transform: scale(1.05);
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .user-info {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .user-name {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+  
+  .buttons {
+    gap: 10px;
+  }
+  
+  .auth-buttons {
+    gap: 10px;
+  }
+}

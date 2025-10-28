@@ -1,0 +1,174 @@
+/* ===== ESTILOS CONTACTO ===== */
+:root {
+  --primary-blue: #3b82f6;
+  --accent-green: #83B81A;
+  --light-gray: #F9F9F9;
+  --white: #FFFFFF;
+  --dark-text: #1A1A1A;
+  --border-color: #ddd;
+  --shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.contact-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  position: relative;
+  padding: 2rem;
+  overflow: hidden;
+  background-color: var(--light-gray);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contact-container {
+  max-width: 500px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background-color: var(--white);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.contact-container:hover {
+  transform: translateY(-5px);
+}
+
+.contact-container h2 {
+  text-align: center;
+  color: var(--primary-blue);
+  margin-bottom: 1.2rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.contact-container p {
+  text-align: center;
+  color: #555;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--dark-text);
+  font-size: 0.95rem;
+}
+
+.form-control {
+  padding: 0.9rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: inherit;
+  background-color: var(--white);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-control.error {
+  border-color: #e74c3c;
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.submit-btn {
+  padding: 0.9rem;
+  background-color: var(--primary-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: var(--accent-green);
+  transform: scale(1.02);
+}
+
+.submit-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.success-message {
+  background: #d4edda;
+  color: #155724;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 1rem;
+  text-align: center;
+  border: 1px solid #c3e6cb;
+}
+
+.decorative-left, .decorative-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 1;
+  border-radius: 10px;
+  opacity: 0.9;
+  animation: waveAnimation 4s ease-in-out infinite alternate;
+}
+
+.decorative-left {
+  left: 0;
+  background: linear-gradient(to bottom, transparent, var(--primary-blue), transparent);
+  transform: skewX(-20deg);
+}
+
+.decorative-right {
+  right: 0;
+  background: linear-gradient(to bottom, transparent, var(--dark-text), transparent);
+  transform: skewX(20deg);
+}
+
+@keyframes waveAnimation {
+  0% { transform: skewX(-20deg) scale(1); }
+  50% { transform: skewX(-20deg) scale(1.1); }
+  100% { transform: skewX(-20deg) scale(1); }
+}

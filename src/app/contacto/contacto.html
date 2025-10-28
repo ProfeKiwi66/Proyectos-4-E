@@ -1,41 +1,33 @@
-
 <div class="contact-wrapper">
   <div class="contact-container">
     <h2>Contacto</h2>
-    <p>Completa el formulario a continuación y nos pondremos en contacto contigo lo antes posible.</p>
+    <p>Completa el formulario a continuación y nos pondremos en contacto<br>contigo lo antes posible.</p>
 
-    <div *ngIf="enviadoExitosamente" class="success-message">
-      <p>🎉 ¡Mensaje enviado! Nos pondremos en contacto contigo pronto.</p>
-    </div>
-
-    <form 
-      class="contact-form" 
-      [formGroup]="contactForm" 
-      (ngSubmit)="onSubmit()" 
-      *ngIf="!enviadoExitosamente">
-
+    <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" formControlName="nombre" placeholder="Tu nombre" />
+        <input type="text" id="nombre" formControlName="nombre" placeholder="Tu nombre" class="form-control">
       </div>
 
       <div class="form-group">
         <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" formControlName="email" placeholder="tu@email.com" />
+        <input type="email" id="email" formControlName="email" placeholder="tu@gmail.com" class="form-control">
       </div>
 
       <div class="form-group">
         <label for="mensaje">Mensaje:</label>
-        <textarea id="mensaje" formControlName="mensaje" placeholder="Escribe tu mensaje" rows="5"></textarea>
+        <textarea id="mensaje" formControlName="mensaje" placeholder="Escribe tu mensaje" rows="4" class="form-control"></textarea>
       </div>
 
-      <button type="submit" class="submit-btn" [disabled]="contactForm.invalid || enviando">
-        {{ enviando ? 'Enviando...' : 'Enviar' }}
-      </button>
+      <div class="button-group">
+        <button type="submit" class="submit-btn" [disabled]="enviando">
+          <span *ngIf="!enviando">Enviar Mensaje</span>
+          <span *ngIf="enviando">Enviando...</span>
+        </button>
+      </div>
     </form>
   </div>
 
   <div class="decorative-left"></div>
   <div class="decorative-right"></div>
 </div>
-

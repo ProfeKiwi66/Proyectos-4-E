@@ -1,32 +1,74 @@
-/**
- * Import function triggers from their respective submodules:
- *
- * import {onCall} from "firebase-functions/v2/https";
- * import {onDocumentWritten} from "firebase-functions/v2/firestore";
- *
- * See a full list of supported triggers at https://firebase.google.com/docs/functions
- */
+import * as functions from "firebase-functions";
+import * as nodemailer from "nodemailer";
 
-import {setGlobalOptions} from "firebase-functions";
-import {onRequest} from "firebase-functions/https";
-import * as logger from "firebase-functions/logger";
+// Configuración de Gmail
+const gmailEmail = "tomas.allendesd@gmail.com";
+const gmailPassword = "tbrq fmho ynai irjk"; // ← PEGA TUS 16 DÍGITOS
 
-// Start writing functions
-// https://firebase.google.com/docs/functions/typescript
+const mailTransport = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: gmailEmail,
+    pass: gmailPassword,
+  },
+});
 
-// For cost control, you can set the maximum number of containers that can be
-// running at the same time. This helps mitigate the impact of unexpected
-// traffic spikes by instead downgrading performance. This limit is a
-// per-function limit. You can override the limit for each function using the
-// `maxInstances` option in the function's options, e.g.
-// `onRequest({ maxInstances: 5 }, (req, res) => { ... })`.
-// NOTE: setGlobalOptions does not apply to functions using the v1 API. V1
-// functions should each use functions.runWith({ maxInstances: 10 }) instead.
-// In the v1 API, each function can only serve one request per container, so
-// this will be the maximum concurrent request count.
-setGlobalOptions({ maxInstances: 10 });
+export const sendContactEmail = functions.https.onCall(
+  async (data: any, context: any) => {
+    const {nombre, email, mensaje} = data;
 
-// export const helloWorld = onRequest((request, response) => {
-//   logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+    if (!nombre || !email || !mensaje) {
+      throw new functions.https.HttpsError(
+        "invalid-argument",
+        "Todos los campos son requeridos"
+      );
+    }
+
+    const mailOptions = {
+      from: `"ChronoPlan Contacto" <${gmailEmail}>`,
+      to: gmailEmail,
+      replyTo: email,
+      subject: `Nuevo mensaje de ${nombre} - ChronoPlan`,
+      html: `
+        <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto;">
+          <div style="background: #3b82f6; color: white; padding: 20px; text-align: center;">
+            <h1>📧 Nuevo Mensaje de Contacto</h1>
+            <p>ChronoPlan</p>
+          </div>
+          <div style="background: #f9f9f9; padding: 20px;">
+            <div style="margin-bottom: 15px;">
+              <strong style="color: #3b82f6;">Nombre:</strong>
+              <span>${nombre}</span>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <strong style="color: #3b82f6;">Email:</strong>
+              <span>${email}</span>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <strong style="color: #3b82f6;">Mensaje:</strong>
+              <p>${mensaje.replace(/\n/g, '<br>')}</p>
+            </div>
+          </div>
+          <div style="text-align: center; margin-top: 20px; color: #666;">
+            <p>Este mensaje fue enviado desde el formulario de contacto de ChronoPlan</p>
+          </div>
+        </div>
+      `,
+    };
+
+    try {
+      await mailTransport.sendMail(mailOptions);
+      console.log('✅ Email enviado exitosamente a:', gmailEmail);
+      return { 
+        success: true, 
+        message: 'Email enviado exitosamente' 
+      };
+    } catch (error: any) {
+      console.error('❌ Error enviando email:', error);
+      throw new functions.https.HttpsError(
+        'internal', 
+        'Error al enviar el email: ' + error.message
+      );
+    }
+  }
+);

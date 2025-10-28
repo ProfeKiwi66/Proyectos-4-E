@@ -2,10 +2,11 @@ import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 
-import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { provideAuth, getAuth } from '@angular/fire/auth';
-import { provideStorage, getStorage } from '@angular/fire/storage';
+// IMPORTACIONES CORRECTAS para Angular 20
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAu-0ACGJIKb6GQ97NNxSnk2yAFJ6lGtxM",
@@ -20,9 +21,11 @@ const firebaseConfig = {
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
+    
+    // CONFIGURACIÓN FIREBASE - ESTE ORDEN ES IMPORTANTE
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
+    provideAuth(() => getAuth()),  // ← ESTA LÍNEA FALTA
     provideFirestore(() => getFirestore()),
-    provideAuth(() => getAuth()),
     provideStorage(() => getStorage())
   ]
 };

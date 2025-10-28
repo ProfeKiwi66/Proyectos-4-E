@@ -1,5 +1,4 @@
-<!-- header.html - VERSIÓN CORREGIDA -->
-<header> <!-- AÑADE ESTA ETIQUETA <header> -->
+<header>
   <a class="logo" routerLink="/">
     <img class="img-chrono" src="https://i.ibb.co/RTfZxSY6/unnamed.png" alt="LogoChronoplan">
     <i class="fa-regular fa-clock"></i>
@@ -7,10 +6,25 @@
   </a>
 
   <div class="buttons">
+    <a class="btn-primary" routerLink="/inicio">Inicio</a>
     <a class="btn-primary" routerLink="/contacto">Contáctanos</a>
-    <a class="btn-primary" routerLink="/iniciosesion">Iniciar Sesión</a>
-    <a class="btn-primary" routerLink="/registro">Registrarse</a>
+
+    <!-- MOSTRAR ESTOS BOTONES SI NO ESTÁ LOGUEADO -->
+    <div *ngIf="!estaLogueado()" class="auth-buttons">
+      <a class="btn-primary" routerLink="/iniciosesion">Iniciar Sesión</a>
+      <a class="btn-primary" routerLink="/registro">Registrarse</a>
+    </div>
+
+    <!-- MOSTRAR ESTO SI ESTÁ LOGUEADO -->
+    <div *ngIf="estaLogueado()" class="user-menu">
+      <div class="user-info">
+        <span class="user-name">Hola, {{ getNombreCorto() }}</span>
+        <button class="btn-primary logout-btn" (click)="cerrarSesion()">
+          Cerrar Sesión
+        </button>
+      </div>
+    </div>
   </div>
 
   <div class="morphing-bg"></div>
-</header> <!-- CIERRA LA ETIQUETA <header> -->
+</header>
