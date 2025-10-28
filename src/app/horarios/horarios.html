@@ -2,66 +2,196 @@
   <header class="horarios-header">
     <h1>Gestión de Horarios ChronoPlan</h1>
     <div class="user-info">
-      <span>Bienvenido, {{userName}}</span>
+      <span>Bienvenido, {{userName}} ({{userRole}})</span>
       <button class="logout-btn" (click)="logout()">Cerrar Sesión</button>
     </div>
   </header>
 
   <main class="main-content">
-    <!-- Panel de carga de base de datos -->
-    <div class="upload-section">
-      <div class="upload-card">
-        <div class="upload-icon">📊</div>
-        <h2>Subir Base de Datos</h2>
-        <p class="upload-description">
-          Para comenzar a generar los horarios automáticamente, sube tu archivo de base de datos en formato Excel (.xlsx)
-        </p>
+    
+    <!-- VISTA PARA JEFE UTP (ADMIN) -->
+    @if (userRole === 'jefe_utp') {
+      <div class="admin-panel">
+        <h2>🏫 Panel de Administración - Jefe UTP</h2>
         
-        <div class="upload-zone" 
-             (click)="fileInput.click()"
-             (drop)="onFileDrop($event)"
-             (dragover)="onDragOver($event)"
-             [class.drag-over]="isDragOver">
-          <div class="upload-placeholder">
-            <span class="upload-icon-large">📁</span>
-            <p>Arrastra tu archivo Excel aquí o haz clic para seleccionar</p>
-            <small>Formatos soportados: .xlsx, .xls</small>
+        <!-- Panel de carga de base de datos -->
+        <div class="upload-section">
+          <div class="upload-card">
+            <div class="upload-icon">📊</div>
+            <h3>Subir Base de Datos</h3>
+            <p class="upload-description">
+              Sube el archivo Excel con cursos, profesores y disponibilidades para asignación automática
+            </p>
+            
+            <div class="upload-zone" 
+                 (click)="fileInput.click()"
+                 (drop)="onFileDrop($event)"
+                 (dragover)="onDragOver($event)"
+                 [class.drag-over]="isDragOver">
+              <div class="upload-placeholder">
+                <span class="upload-icon-large">📁</span>
+                <p>Arrastra tu archivo Excel aquí o haz clic para seleccionar</p>
+                <small>Formatos soportados: .xlsx, .xls</small>
+              </div>
+              <input #fileInput type="file" (change)="onFileSelected($event)" 
+                     accept=".xlsx,.xls" hidden>
+            </div>
+
+            <button class="process-btn" 
+                    (click)="processSchedule()" 
+                    [disabled]="!selectedFile">
+              🤖 Generar Asignación Automática
+            </button>
+
+            @if (uploadStatus) {
+              <div class="upload-status" [class]="uploadStatus">
+                {{ uploadMessage }}
+              </div>
+            }
+
+            <!-- Sección del template -->
+            <div class="template-section">
+              <button class="template-btn" (click)="descargarTemplate()">
+                📥 Descargar Base de Datos Template
+              </button>
+              <small>Template con estructura para cursos y profesores</small>
+            </div>
           </div>
-          <input #fileInput type="file" (change)="onFileSelected($event)" 
-                 accept=".xlsx,.xls" hidden>
         </div>
 
-        <button class="process-btn" 
-                (click)="processSchedule()" 
-                [disabled]="!selectedFile">
-          🚀 Generar Horarios Automáticamente
-        </button>
+        <!-- Sección de resultados de asignación automática -->
+        @if (horariosGenerados && horariosProcesados.length > 0) {
+          <div class="results-section">
+            <h3>📊 Resultados de la Asignación Automática</h3>
+            
+            <!-- Estadísticas -->
+            <div class="stats-grid">
+              <div class="stat-card success">
+                <div class="stat-number">{{estadisticas.asignados}}</div>
+                <div class="stat-label">Asignados</div>
+              </div>
+              <div class="stat-card warning">
+                <div class="stat-number">{{estadisticas.sinProfesor}}</div>
+                <div class="stat-label">Sin Profesor</div>
+              </div>
+              <div class="stat-card total">
+                <div class="stat-number">{{estadisticas.total}}</div>
+                <div class="stat-label">Total</div>
+              </div>
+              <div class="stat-card percentage">
+                <div class="stat-number">{{estadisticas.porcentajeAsignacion}}%</div>
+                <div class="stat-label">Éxito</div>
+              </div>
+            </div>
 
-        <!-- CORREGIDO: *ngIf cambiado por @if -->
-        @if (uploadStatus) {
-          <div class="upload-status" [class]="uploadStatus">
-            {{ uploadMessage }}
+            <!-- Vista previa de horarios -->
+            <div class="preview-table">
+              <h4>📋 Vista Previa de Horarios Asignados:</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Curso</th>
+                    <th>Asignatura</th>
+                    <th>Profesor</th>
+                    <th>Día</th>
+                    <th>Hora</th>
+                    <th>Sala</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (horario of horariosProcesados.slice(0, 8); track $index) {
+                    <tr [class]="'estado-' + horario.estado">
+                      <td>{{ horario.curso }}</td>
+                      <td>{{ horario.asignatura }}</td>
+                      <td>{{ horario.profesor }}</td>
+                      <td>{{ horario.dia }}</td>
+                      <td>{{ horario.hora }}</td>
+                      <td>{{ horario.sala }}</td>
+                      <td>
+                        <span class="badge" [class]="'badge-' + horario.estado">
+                          @switch (horario.estado) {
+                            @case ('asignado') { ✅ Asignado }
+                            @case ('sin_profesor') { ⚠️ Sin Profesor }
+                            @case ('conflicto') { ❌ Conflicto }
+                          }
+                        </span>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+              @if (horariosProcesados.length > 8) {
+                <p class="more-records">... y {{ horariosProcesados.length - 8 }} horarios más</p>
+              }
+            </div>
+
+            <!-- Resumen de asignación -->
+            <div class="assignment-summary">
+              <h4>📈 Resumen de la Asignación</h4>
+              <p>
+                El sistema ha procesado <strong>{{estadisticas.total}}</strong> horarios requeridos 
+                y ha asignado exitosamente <strong>{{estadisticas.asignados}}</strong> 
+                (<strong>{{estadisticas.porcentajeAsignacion}}%</strong> de éxito).
+              </p>
+              @if (estadisticas.sinProfesor > 0) {
+                <p class="warning-message">
+                  ⚠️ <strong>{{estadisticas.sinProfesor}}</strong> horarios no pudieron ser asignados 
+                  por falta de profesores disponibles.
+                </p>
+              }
+            </div>
           </div>
         }
-      </div>
-    </div>
 
-    <!-- CORREGIDO: *ngIf cambiado por @if -->
-    @if (horariosGenerados) {
-      <div class="schedule-section">
-        <h3>Horarios Generados</h3>
-        <!-- Aquí iría la visualización de horarios como en tu imagen -->
+        <!-- Herramientas administrativas -->
+        <div class="admin-tools">
+          <h3>🔧 Herramientas de Gestión</h3>
+          <div class="tools-grid">
+            <div class="tool-card">
+              <span class="tool-icon">👥</span>
+              <span class="tool-label">Gestionar Usuarios</span>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">📅</span>
+              <span class="tool-label">Modificar Horarios</span>
+            </div>
+            <div class="tool-card">
+              <span class="tool-icon">📊</span>
+              <span class="tool-label">Reportes</span>
+            </div>
+          </div>
+        </div>
       </div>
     }
+
+    <!-- VISTA PARA PROFESOR -->
+    @if (userRole === 'profesor') {
+      <div class="profesor-panel">
+        <h2>👨‍🏫 Panel del Profesor</h2>
+        <p>Aquí podrás ver tus horarios de clases y cursos asignados</p>
+        
+        <div class="schedule-placeholder">
+          <div class="placeholder-icon">📚</div>
+          <p>Tu horario semanal aparecerá aquí</p>
+          <small>Los horarios son asignados por el Jefe UTP</small>
+        </div>
+      </div>
+    }
+
+    <!-- VISTA PARA ALUMNO -->
+    @if (userRole === 'alumno') {
+      <div class="alumno-panel">
+        <h2>🎓 Panel del Alumno</h2>
+        <p>Consulta tu horario de clases y asignaturas</p>
+        
+        <div class="schedule-placeholder">
+          <div class="placeholder-icon">📖</div>
+          <p>Tu horario de clases aparecerá aquí</p>
+          <small>Los horarios son gestionados por la administración</small>
+        </div>
+      </div>
+    }
+
   </main>
 
-  <footer class="horarios-footer">
-    <div class="footer-links">
-      <a href="#">Términos y Condiciones</a>
-      <a href="#">Política de Privacidad</a>
-    </div>
-    <div class="footer-copyright">
-      © 2025 ChronoPlan. Todos los derechos reservados.
-    </div>
-  </footer>
-</div>

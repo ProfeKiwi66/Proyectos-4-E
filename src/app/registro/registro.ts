@@ -26,7 +26,8 @@ export class Registro {
       nombre: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmarPassword: ['', [Validators.required]]
+      confirmarPassword: ['', [Validators.required]],
+      rol: ['', [Validators.required]] // ← NUEVO CAMPO
     }, { 
       validators: this.passwordsIguales 
     });
@@ -59,18 +60,18 @@ export class Registro {
     this.mensajeError = '';
     this.registroExitoso = false;
 
-    const { nombre, email, password } = this.registroForm.value;
+    const { nombre, email, password, rol } = this.registroForm.value;
 
     try {
-      const resultado = await this.authService.register(email, password, nombre);
+        const resultado = await this.authService.register(email, password, nombre, rol);
       
       if (resultado.success) {
         this.registroExitoso = true;
-        console.log('✅ Registro exitoso');
+        console.log('✅ Registro exitoso - Rol:', rol);
         
         // Redirigir después de 2 segundos
         setTimeout(() => {
-          this.router.navigate(['/inicio']);
+          this.router.navigate(['/horarios']);
         }, 2000);
       } else {
         this.mensajeError = resultado.error || 'Error al registrar usuario';
@@ -88,4 +89,5 @@ export class Registro {
   get email() { return this.registroForm.get('email'); }
   get password() { return this.registroForm.get('password'); }
   get confirmarPassword() { return this.registroForm.get('confirmarPassword'); }
+  get rol() { return this.registroForm.get('rol'); } // ← NUEVO GETTER
 }

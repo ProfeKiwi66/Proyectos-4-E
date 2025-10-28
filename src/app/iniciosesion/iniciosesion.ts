@@ -21,8 +21,8 @@ export class InicioSesion {
  constructor() {
     // AQUÍ VA EL CÓDIGO - REEMPLAZA LO QUE TENÍAS:
     this.loginForm = this.fb.group({
-      email: ['prueba@chronoplan.com', [Validators.required, Validators.email]], // ← Datos de prueba
-      password: ['123456', [Validators.required, Validators.minLength(6)]] // ← Datos de prueba
+      email: ['', [Validators.required, Validators.email]], 
+      password: ['', [Validators.required, Validators.minLength(6)]] 
     });
   }
 
