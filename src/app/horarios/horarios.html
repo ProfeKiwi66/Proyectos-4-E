@@ -1,1 +1,67 @@
-<p>horarios works!</p>
+<div class="horarios-container">
+  <header class="horarios-header">
+    <h1>Gestión de Horarios ChronoPlan</h1>
+    <div class="user-info">
+      <span>Bienvenido, {{userName}}</span>
+      <button class="logout-btn" (click)="logout()">Cerrar Sesión</button>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- Panel de carga de base de datos -->
+    <div class="upload-section">
+      <div class="upload-card">
+        <div class="upload-icon">📊</div>
+        <h2>Subir Base de Datos</h2>
+        <p class="upload-description">
+          Para comenzar a generar los horarios automáticamente, sube tu archivo de base de datos en formato Excel (.xlsx)
+        </p>
+        
+        <div class="upload-zone" 
+             (click)="fileInput.click()"
+             (drop)="onFileDrop($event)"
+             (dragover)="onDragOver($event)"
+             [class.drag-over]="isDragOver">
+          <div class="upload-placeholder">
+            <span class="upload-icon-large">📁</span>
+            <p>Arrastra tu archivo Excel aquí o haz clic para seleccionar</p>
+            <small>Formatos soportados: .xlsx, .xls</small>
+          </div>
+          <input #fileInput type="file" (change)="onFileSelected($event)" 
+                 accept=".xlsx,.xls" hidden>
+        </div>
+
+        <button class="process-btn" 
+                (click)="processSchedule()" 
+                [disabled]="!selectedFile">
+          🚀 Generar Horarios Automáticamente
+        </button>
+
+        <!-- CORREGIDO: *ngIf cambiado por @if -->
+        @if (uploadStatus) {
+          <div class="upload-status" [class]="uploadStatus">
+            {{ uploadMessage }}
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- CORREGIDO: *ngIf cambiado por @if -->
+    @if (horariosGenerados) {
+      <div class="schedule-section">
+        <h3>Horarios Generados</h3>
+        <!-- Aquí iría la visualización de horarios como en tu imagen -->
+      </div>
+    }
+  </main>
+
+  <footer class="horarios-footer">
+    <div class="footer-links">
+      <a href="#">Términos y Condiciones</a>
+      <a href="#">Política de Privacidad</a>
+    </div>
+    <div class="footer-copyright">
+      © 2025 ChronoPlan. Todos los derechos reservados.
+    </div>
+  </footer>
+</div>

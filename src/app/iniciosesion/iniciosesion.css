@@ -1,15 +1,32 @@
-/* VARIABLES */
+/* VARIABLES ÚNICAS PARA INICIO SESIÓN */
 :root {
-  --primary-blue: #3b82f6;
-  --accent-green: #83B81A;
-  --light-gray: #F9F9F9;
-  --white: #FFFFFF;
-  --dark-text: #1A1A1A;
-  --border-color: #ddd;
-  --shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  --login-primary-blue: #3b82f6;
+  --login-accent-green: #83B81A;
+  --login-light-gray: #F9F9F9;
+  --login-white: #FFFFFF;
+  --login-dark-text: #1A1A1A;
+  --login-border-color: #ddd;
+  --login-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
-/* CONTENEDOR PRINCIPAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--login-light-gray);
+  color: var(--login-dark-text);
+  line-height: 1.6;
+}
+
 .contact-wrapper {
   display: flex;
   justify-content: center;
@@ -17,20 +34,68 @@
   min-height: 80vh;
   position: relative;
   padding: 2rem;
-  overflow: hidden;
-  background-color: var(--light-gray);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 100vw;
 }
 
+/* DECORACIONES LATERALES */
+.decorative-left,
+.decorative-right {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 300px;
+  z-index: 0;
+  border-radius: 10px;
+  opacity: 0.7;
+  animation: waveAnimation 6s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.decorative-left {
+  left: 10px;
+  background: linear-gradient(to bottom, 
+    transparent 0%, 
+    var(--login-primary-blue) 30%, 
+    var(--login-primary-blue) 70%, 
+    transparent 100%);
+  transform: translateY(-50%) skewX(-10deg);
+}
+
+.decorative-right {
+  right: 10px;
+  background: linear-gradient(to bottom, 
+    transparent 0%, 
+    var(--login-dark-text) 30%, 
+    var(--login-dark-text) 70%, 
+    transparent 100%);
+  transform: translateY(-50%) skewX(10deg);
+}
+
+@keyframes waveAnimation {
+  0% {
+    opacity: 0.7;
+    transform: translateY(-50%) skewX(-10deg) scaleY(0.95);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-50%) skewX(-10deg) scaleY(1);
+  }
+  100% {
+    opacity: 0.7;
+    transform: translateY(-50%) skewX(-10deg) scaleY(0.95);
+  }
+}
+
+/* CONTENEDOR PRINCIPAL */
 .contact-container {
   max-width: 500px;
   width: 100%;
-  margin: 2rem auto;
   padding: 2.5rem;
-  background-color: var(--white);
+  background-color: var(--login-white);
   border-radius: 16px;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border-color);
+  box-shadow: var(--login-shadow);
+  border: 1px solid var(--login-border-color);
   position: relative;
   z-index: 2;
   transition: transform 0.3s ease;
@@ -42,7 +107,7 @@
 
 .contact-container h2 {
   text-align: center;
-  color: var(--primary-blue);
+  color: var(--login-primary-blue);
   margin-bottom: 1.2rem;
   font-size: 1.8rem;
   font-weight: 600;
@@ -53,7 +118,6 @@
   color: #555;
   margin-bottom: 2rem;
   font-size: 0.95rem;
-  line-height: 1.5;
 }
 
 /* FORMULARIO */
@@ -71,70 +135,73 @@
 
 .form-group label {
   font-weight: 600;
-  color: var(--dark-text);
+  color: var(--login-dark-text);
   font-size: 0.95rem;
 }
 
 .form-control {
   padding: 0.9rem;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--login-border-color);
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   font-family: inherit;
-  background-color: var(--white);
+  background-color: var(--login-white);
 }
 
 .form-control:focus {
   outline: none;
-  border-color: var(--primary-blue);
+  border-color: var(--login-primary-blue);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .form-control.error {
   border-color: #e74c3c;
-}
-
-textarea.form-control {
-  resize: vertical;
-  min-height: 120px;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
 }
 
 .error-message {
   color: #e74c3c;
   font-size: 0.85rem;
   margin-top: 0.25rem;
+  display: block;
 }
 
-/* BOTÓN */
+/* BOTONES */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
 .submit-btn {
   padding: 0.9rem;
-  background-color: var(--primary-blue);
-  color: var(--white);
+  background-color: var(--login-primary-blue);
+  color: var(--login-white);
   border: none;
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
   font-size: 1rem;
-  margin-top: 1rem;
   width: 100%;
+  text-align: center;
 }
 
 .submit-btn:hover:not(:disabled) {
-  background-color: var(--accent-green);
+  background-color: var(--login-dark-text);
   transform: scale(1.02);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: scale(0.98);
 }
 
 .submit-btn:disabled {
   background-color: #ccc;
   cursor: not-allowed;
-}
-
-.button-group {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+  transform: none;
 }
 
 .success-message {
@@ -142,37 +209,28 @@ textarea.form-control {
   color: #155724;
   padding: 12px;
   border-radius: 8px;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
   text-align: center;
   border: 1px solid #c3e6cb;
+  font-weight: 500;
 }
 
-/* DECORACIONES LATERALES */
-.decorative-left, .decorative-right {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 80px;
-  z-index: 1;
-  border-radius: 10px;
-  opacity: 0.9;
-  animation: waveAnimation 4s ease-in-out infinite alternate;
-}
-
-.decorative-left {
-  left: 0;
-  background: linear-gradient(to bottom, transparent, var(--primary-blue), transparent);
-  transform: skewX(-20deg);
-}
-
-.decorative-right {
-  right: 0;
-  background: linear-gradient(to bottom, transparent, var(--dark-text), transparent);
-  transform: skewX(20deg);
-}
-
-@keyframes waveAnimation {
-  0% { transform: skewX(-20deg) scale(1); }
-  50% { transform: skewX(-20deg) scale(1.1); }
-  100% { transform: skewX(-20deg) scale(1); }
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .contact-wrapper {
+    padding: 1rem;
+  }
+  
+  .contact-container {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+  }
+  
+  .decorative-left,
+  .decorative-right {
+    width: 40px;
+    height: 250px;
+    left: 5px;
+    right: 5px;
+  }
 }

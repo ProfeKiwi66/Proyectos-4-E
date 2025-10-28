@@ -5,24 +5,33 @@
     <span>ChronoPlan</span>
   </a>
 
-  <div class="buttons">
-    <a class="btn-primary" routerLink="/inicio">Inicio</a>
-    <a class="btn-primary" routerLink="/contacto">Contáctanos</a>
+  <!-- SECCIÓN CENTRAL - Aquí va el menú de usuario -->
+  <div class="header-center">
+    <!-- MOSTRAR ESTO SI ESTÁ LOGUEADO -->
+    <div *ngIf="estaLogueado()" class="user-section-centered">
+      <div class="user-welcome-centered">
+        <span class="welcome-text-centered">¡Bienvenido!</span>
+        <span class="user-name-centered">{{ getNombreCorto() }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="buttons-right">
+    <a class="btn-primary spaced-btn" routerLink="/inicio">Inicio</a>
+    <a class="btn-primary spaced-btn" routerLink="/contacto">Contáctanos</a>
 
     <!-- MOSTRAR ESTOS BOTONES SI NO ESTÁ LOGUEADO -->
     <div *ngIf="!estaLogueado()" class="auth-buttons">
-      <a class="btn-primary" routerLink="/iniciosesion">Iniciar Sesión</a>
-      <a class="btn-primary" routerLink="/registro">Registrarse</a>
+      <a class="btn-primary spaced-btn" routerLink="/iniciosesion">Iniciar Sesión</a>
+      <a class="btn-primary spaced-btn" routerLink="/registro">Registrarse</a>
     </div>
 
-    <!-- MOSTRAR ESTO SI ESTÁ LOGUEADO -->
-    <div *ngIf="estaLogueado()" class="user-menu">
-      <div class="user-info">
-        <span class="user-name">Hola, {{ getNombreCorto() }}</span>
-        <button class="btn-primary logout-btn" (click)="cerrarSesion()">
-          Cerrar Sesión
-        </button>
-      </div>
+    <!-- MOSTRAR BOTÓN CERRAR SESIÓN SI ESTÁ LOGUEADO -->
+    <div *ngIf="estaLogueado()" class="logout-section">
+      <button class="btn-logout-centered" (click)="cerrarSesion()">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Cerrar Sesión
+      </button>
     </div>
   </div>
 

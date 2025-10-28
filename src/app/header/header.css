@@ -7,6 +7,7 @@ header {
   padding: 15px 30px;
   overflow: hidden; 
   height: 90px;
+  gap: 20px; /* Más espacio entre secciones */
 }
 
 header .morphing-bg {
@@ -36,7 +37,8 @@ header .logo {
   color: white;
   position: relative;
   z-index: 1;
-  text-decoration: none; /* Quita subrayado */
+  text-decoration: none;
+  flex-shrink: 0; /* Evita que se encoja */
 }
 
 header .logo span { 
@@ -48,87 +50,231 @@ header .logo span {
   width: auto; 
 }
 
-/* Botones */
-header .buttons { 
+/* SECCIÓN CENTRAL - DONDE VA EL USUARIO */
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* USUARIO CENTRADO */
+.user-section-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1));
+  padding: 10px 20px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.user-welcome-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.welcome-text-centered {
+  color: #e8f4ff;
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.user-name-centered {
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  background: linear-gradient(45deg, #83B81A, #6ea316);
+  padding: 6px 18px;
+  border-radius: 25px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* BOTONES DE LA DERECHA */
+.buttons-right { 
   display: flex; 
-  gap: 20px; 
+  gap: 25px; /* MÁS ESPACIO ENTRE BOTONES */
   position: relative; 
   z-index: 1; 
+  align-items: center;
+  flex-shrink: 0;
 }
 
-/* Apunta a .btn-primary en lugar de 'button' */
-header .buttons .btn-primary {
-  padding: 9px 20px;
+/* Botones con más espacio */
+.spaced-btn {
+  padding: 10px 22px !important; /* Botones más grandes */
+  margin: 0 5px; /* Espacio adicional alrededor */
+}
+
+/* Botones principales */
+header .buttons-right .btn-primary {
+  padding: 10px 22px;
   border: none;
   font-size: 15px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.3s ease;
   background-color: rgba(255, 255, 255, 0.2);
-  color: white; /* Lo puse blanco */
-  text-decoration: none; /* Quita subrayado */
-}
-
-header .buttons .btn-primary:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-/* Estilos para el menú de usuario */
-.user-menu {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.user-name {
   color: white;
-  font-weight: 500;
-  font-size: 14px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 5px 12px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  min-width: 100px; /* Ancho mínimo consistente */
+  text-align: center;
 }
 
-.logout-btn {
-  background-color: rgba(255, 255, 255, 0.15) !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+header .buttons-right .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
-.logout-btn:hover {
-  background-color: rgba(255, 255, 255, 0.25) !important;
-  transform: scale(1.05);
-}
-
+/* Botones de autenticación cuando NO está logueado */
 .auth-buttons {
   display: flex;
-  gap: 20px;
+  gap: 20px; /* Más espacio entre login/registro */
+}
+
+/* SECCIÓN DE CERRAR SESIÓN */
+.logout-section {
+  display: flex;
+  align-items: center;
+}
+
+/* Botón de cerrar sesión - COLOR DIFERENTE */
+.btn-logout-centered {
+  padding: 10px 20px;
+  border: none;
+  font-size: 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(45deg, #ff6b6b, #ee5a5a);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  min-width: 120px;
+  justify-content: center;
+}
+
+.btn-logout-centered:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 107, 107, 0.4);
+  background: linear-gradient(45deg, #ff5252, #e53935);
+}
+
+.btn-logout-centered:active {
+  transform: translateY(0);
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  header {
+    padding: 15px 20px;
+    gap: 15px;
+  }
+  
+  .buttons-right {
+    gap: 15px;
+  }
+  
+  .auth-buttons {
+    gap: 15px;
+  }
+  
+  header .buttons-right .btn-primary {
+    padding: 8px 18px;
+    font-size: 14px;
+    min-width: 90px;
+  }
+}
+
 @media (max-width: 768px) {
-  .user-info {
-    flex-direction: column;
-    gap: 5px;
+  header {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 80px;
+    gap: 10px;
+    padding: 10px 15px;
   }
   
-  .user-name {
-    font-size: 12px;
-    padding: 4px 8px;
+  .header-center {
+    order: 3;
+    flex: 100%;
+    margin-top: 10px;
   }
   
-  .buttons {
+  .buttons-right {
     gap: 10px;
   }
   
   .auth-buttons {
     gap: 10px;
+  }
+  
+  .user-section-centered {
+    padding: 8px 16px;
+  }
+  
+  .welcome-text-centered {
+    font-size: 11px;
+  }
+  
+  .user-name-centered {
+    font-size: 14px;
+    padding: 5px 15px;
+  }
+  
+  .btn-logout-centered {
+    padding: 8px 16px;
+    font-size: 13px;
+    min-width: 110px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 8px 10px;
+  }
+  
+  .logo span {
+    font-size: 24px;
+  }
+  
+  .img-chrono {
+    height: 3em;
+  }
+  
+  .buttons-right {
+    gap: 8px;
+  }
+  
+  header .buttons-right .btn-primary {
+    padding: 6px 12px;
+    font-size: 13px;
+    min-width: 80px;
+  }
+  
+  .user-section-centered {
+    padding: 6px 12px;
+  }
+  
+  .user-name-centered {
+    font-size: 13px;
+    padding: 4px 12px;
   }
 }

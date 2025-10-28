@@ -45,7 +45,7 @@ export class InicioSesion {
     if (resultado.success) {
       console.log('✅ Login exitoso - Redirigiendo...');
       // Redirigir a la página principal después del login
-      this.router.navigate(['/inicio']);
+      this.router.navigate(['/horarios']);
     } else {
       this.mensajeError = resultado.error || 'Error al iniciar sesión';
     }
